@@ -1,71 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Price Predictor</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Price Predictor</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🚗 Car Price Prediction</h1>
-        <p>Enter the details of the car to predict its selling price.</p>
-        
-        <form id="prediction-form">
-            <div class="form-group">
-                <label for="year">Year of Purchase</label>
-                <input type="number" id="year" name="year" placeholder="e.g., 2015" required>
-            </div>
+  <div class="background-gradient"></div>
 
-            <div class="form-group">
-                <label for="present_price">Present Showroom Price (in Lakhs)</label>
-                <input type="number" id="present_price" name="present_price" step="0.01" placeholder="e.g., 8.5" required>
-            </div>
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle">
+    <input type="checkbox" id="theme-switch" />
+    <label for="theme-switch" class="toggle-label">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </label>
+  </div>
 
-            <div class="form-group">
-                <label for="kms_driven">Kilometers Driven</label>
-                <input type="number" id="kms_driven" name="kms_driven" placeholder="e.g., 27000" required>
-            </div>
-
-            <div class="form-group">
-                <label for="owner">Number of Previous Owners</label>
-                <input type="number" id="owner" name="owner" placeholder="e.g., 0" required>
-            </div>
-
-            <div class="form-group">
-                <label for="fuel_type">Fuel Type</label>
-                <select id="fuel_type" name="fuel_type" required>
-                    <option value="Petrol">Petrol</option>
-                    <option value="Diesel">Diesel</option>
-                    <option value="CNG">CNG</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="seller_type">Seller Type</label>
-                <select id="seller_type" name="seller_type" required>
-                    <option value="Dealer">Dealer</option>
-                    <option value="Individual">Individual</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="transmission">Transmission Type</label>
-                <select id="transmission" name="transmission" required>
-                    <option value="Manual">Manual</option>
-                    <option value="Automatic">Automatic</option>
-                </select>
-            </div>
-
-            <button type="submit" id="predict-button">Predict Price</button>
-        </form>
-
-        <div id="result-container">
-            <h2>Predicted Price:</h2>
-            <h3 id="result">...</h3>
-        </div>
-    </div>
+  <div class="container glass-card">
+    <h1>🚗 Car Price Predictor</h1>
+    <p>Enter car details below to get an estimated selling price.</p>
     
-    <script src="script.js"></script>
+    <form id="prediction-form">
+      <div class="form-group">
+        <label for="year">Year of Purchase</label>
+        <input type="number" id="year" name="year" placeholder="e.g., 2015" required>
+      </div>
+
+      <div class="form-group">
+        <label for="present_price">Present Showroom Price (in Lakhs)</label>
+        <input type="number" id="present_price" name="present_price" step="0.01" placeholder="e.g., 8.5" required>
+      </div>
+
+      <div class="form-group">
+        <label for="kms_driven">Kilometers Driven</label>
+        <input type="number" id="kms_driven" name="kms_driven" placeholder="e.g., 27000" required>
+      </div>
+
+      <div class="form-group">
+        <label for="owner">Number of Previous Owners</label>
+        <input type="number" id="owner" name="owner" placeholder="e.g., 0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fuel_type">Fuel Type</label>
+        <select id="fuel_type" name="fuel_type" required>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="CNG">CNG</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="seller_type">Seller Type</label>
+        <select id="seller_type" name="seller_type" required>
+          <option value="Dealer">Dealer</option>
+          <option value="Individual">Individual</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="transmission">Transmission Type</label>
+        <select id="transmission" name="transmission" required>
+          <option value="Manual">Manual</option>
+          <option value="Automatic">Automatic</option>
+        </select>
+      </div>
+
+      <button type="submit" id="predict-button">🚀 Predict Price</button>
+    </form>
+
+    <div id="result-container">
+      <h2>Predicted Price:</h2>
+      <h3 id="result">...</h3>
+    </div>
+  </div>
+
+  <footer>
+    <p>Made with ❤️ by Anish Kumar | AI Project 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // THEME TOGGLE SCRIPT
+    const toggleSwitch = document.getElementById('theme-switch');
+    const body = document.body;
+
+    // Load theme preference
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-theme');
+      toggleSwitch.checked = false;
+    } else {
+      body.classList.remove('light-theme');
+      toggleSwitch.checked = true;
+    }
+
+    toggleSwitch.addEventListener('change', () => {
+      if (toggleSwitch.checked) {
+        body.classList.remove('light-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.add('light-theme');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
 </body>
 </html>
